@@ -1,0 +1,80 @@
+body {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  padding: 30px;
+}
+
+.form-container {
+  max-width: 50%;
+  margin: auto;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: rgb(29, 109, 184);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+select {
+  width: 98%;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.button-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 20px auto;
+}
+
+button[type="submit"] {
+  padding: 12px;
+  background-color: rgb(64, 152, 235);
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: rgb(29, 109, 184);
+}
+
+button[type="button"] {
+  padding: 12px;
+  background-color: rgb(53, 52, 52);
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
