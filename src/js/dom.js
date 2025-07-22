@@ -1,13 +1,13 @@
 const createElement=(tag,classes=[],text='')=>{
     let element=document.createElement(tag)
-    classes.forEach((cls)=>{
-        element.classList.add(cls)
+    classes.forEach((clas)=>{
+        element.classList.add(clas)
     })
     element.textContent=text
     return element
 }
 
-const appendToParent=(parent,children)=>{
+const appendToParent=(parent,children=[])=>{
     children.forEach((child)=>{
         parent.appendChild(child)
     })
@@ -24,11 +24,12 @@ const createInput=(name,type)=>{
 const createSelect=(categories)=>{
     let select=createElement('select')
     select.name='category'
-    categories.forEach((cat)=>{
-        let option=createElement('option',[],cat)
-        option.value=cat
-        appendToParent(select,[option])
+    const categoriesOptions =categories.map((category)=>{
+        let option=createElement('option',[],category)
+        option.value=category
+        return option
     })
+    appendToParent(select, categoriesOptions)
     return select
 }
 //  #2
