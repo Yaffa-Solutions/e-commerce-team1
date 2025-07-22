@@ -1,27 +1,27 @@
-let page=document.getElementById('app')
-function AddProductPage(){
-    let bigDiv=createElement('div',['form-container'])
-    let header=createElement('h2',[],'Add Product')
-    let form=createElement('form')
-    let labelName=createElement('label',[],'ProductName')
-    let inputName=createInput('productname','text')
+const page=document.getElementById('app')
+const productForm=()=>{
+    const bigDiv=createElement('div',['form-container'])
+    const header=createElement('h2',[],'Add Product')
+    const form=createElement('form')
+    const labelName=createElement('label',[],'ProductName')
+    const inputName=createInput('productname','text')
 
-    let labelDetail=createElement('label',[],'ProductDetail')
-    let inputDetail=createElement('textarea')
+    const labelDetail=createElement('label',[],'ProductDetail')
+    const inputDetail=createElement('textarea')
 
-    let labelPrice=createElement('label',[],'Price ($)')
-    let inputPrice=createInput('price','number')
+    const labelPrice=createElement('label',[],'Price ($)')
+    const inputPrice=createInput('price','number')
 
-    let labelImage=createElement('label',[],'Image URL')
-    let inputImage=createInput('image','text')
+    const labelImage=createElement('label',[],'Image URL')
+    const inputImage=createInput('image','text')
 
-    let labelCategory=createElement('label',[],'Category')
-    let categories=['-- Select Category --','Clothing','Electronics','Home Appliances','Accessories','Toys']
-    let inputCategory=createSelect(categories)
+    const labelCategory=createElement('label',[],'Category')
+    const categories=['-- Select Category --','Clothing','Electronics','Home Appliances','Accessories','Toys']
+    const inputCategory=createSelect(categories)
 
-    let divButtons=createElement('div',['button-group'])
-    let submitButton=createElement('button',[], 'Add Product')
-    let cancelButton=createElement('button',[], 'Cancel')
+    const divButtons=createElement('div',['button-group'])
+    const submitButton=createElement('button',[], 'Add Product')
+    const cancelButton=createElement('button',[], 'Cancel')
 
     submitButton.type='submit'
     cancelButton.type='button'
@@ -31,4 +31,4 @@ function AddProductPage(){
     appendToParent(page,[bigDiv])
 }
 
-AddProductPage()
+productForm()
