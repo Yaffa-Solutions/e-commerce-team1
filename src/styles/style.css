@@ -49,6 +49,13 @@ select {
   font-size: 14px;
 }
 
+.inputs_style:focus,
+select:focus,
+textarea:focus {
+  border-color: #1d6db8;
+  outline: none;
+}
+
 textarea {
   resize: vertical;
   font-family: Arial, sans-serif;
