@@ -14,8 +14,8 @@ const appendToParent=(parent,children=[])=>{
 }
 
 
-const createInput=(name,type)=>{
-    let input=createElement('input')
+const createInput=(name,classes=[],type)=>{
+    let input=createElement('input',classes)
     input.type=type
     input.name=name
     return input
