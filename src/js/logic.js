@@ -54,7 +54,7 @@ const productForm=()=>{
 // productForm()
 
 // #2
-function ProductTablePage() {
+export function ProductTablePage() {
     page.innerHTML = ''
 
     const container = createElement('div', ['product-table-container'])
