@@ -93,3 +93,61 @@ button[type="button"] {
   border-radius: 4px;
   cursor: pointer;
 }
+/* #2 */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.product-table th, .product-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+.button-group button, .product-table button {
+  margin: 4px;
+}
+.search-bar input {
+  width: 50%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+.add-product-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  transition: background-color 0.3s ease;
+}
+
+.add-product-btn :hover {
+  background-color: #0056b3;
+}
+.edit-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin-right: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.edit-btn:hover {
+  background-color: #2d2f93;
+}
+
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
