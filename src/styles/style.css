@@ -20,16 +20,18 @@ h2 {
   margin-bottom: 20px;
 }
 
+p{
+  color: red;
+  margin-top: -10px;
+}
+
 label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
 
-input[type="text"],
-input[type="number"],
-textarea,
-select {
+.inputs_style {
   width: 95%;
   padding: 10px;
   margin-bottom: 15px;
@@ -40,10 +42,16 @@ select {
 
 select {
   width: 98%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
 textarea {
   resize: vertical;
+  font-family: Arial, sans-serif;
   min-height: 80px;
 }
 
