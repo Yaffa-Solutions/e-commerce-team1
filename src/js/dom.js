@@ -24,12 +24,11 @@ const createInput=(name,type)=>{
 const createSelect=(categories)=>{
     let select=createElement('select')
     select.name='category'
-    let options=[]
-    categories.forEach((category)=>{
+    const categoriesOptions =categories.map((category)=>{
         let option=createElement('option',[],category)
         option.value=category
-        options.push(option)
+        return option
     })
-    appendToParent(select, options)
+    appendToParent(select, categoriesOptions)
     return select
 }
