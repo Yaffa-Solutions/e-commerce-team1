@@ -13,12 +13,6 @@ const appendToParent = (parent, children = []) => {
   });
 };
 
-const createInput = (name, type) => {
-  let input = createElement('input');
-  input.type = type;
-  input.name = name;
-  return input;
-};
 
 
 const createInput=(name,classes=[],type,value)=>{
@@ -281,15 +275,4 @@ function renderCartPage() {
   document.body.appendChild(backBtn);
 }
 
-const createSelect = (categories) => {
-  let select = createElement('select');
-  select.name = 'category';
-  const categoriesOptions = categories.map((category) => {
-    let option = createElement('option', [], category);
-    option.value = category;
-    return option;
-  });
-  appendToParent(select, categoriesOptions);
-  return select;
-};
 
