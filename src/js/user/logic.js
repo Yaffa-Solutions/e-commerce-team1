@@ -10,18 +10,15 @@ const CustomerProductsPage = () => {
     page.appendChild(msg);
     return;
   }
-
-  const title = createElement('h2', ['page-title'], 'Available Products:');
-  page.appendChild(title);
+  const bigDiv = createElement('div', ['products-container']);
+  const header = createElement('h2', ['page-title'], 'Available Products:');
 
   const btnContainer = createElement('div', ['view-buttons']);
   const gridBtn = createElement('button', ['grid-btn'], 'View as Grid');
   const listBtn = createElement('button', ['list-btn'], 'View as List');
   appendToParent(btnContainer, [gridBtn, listBtn]);
-  page.appendChild(btnContainer);
 
   const container = createElement('div', ['customer-products', 'grid-view']);
-  page.appendChild(container);
 
   const renderProducts = (viewType = 'grid') => {
     container.innerHTML = '';
@@ -44,11 +41,13 @@ const CustomerProductsPage = () => {
       const category = createElement('p', [], product.category);
 
       appendToParent(card, [img, name, details, price, category]);
-      container.appendChild(card);
+      appendToParent(container, [card]);
     });
   };
 
   renderProducts('grid');
+  appendToParent(bigDiv, [header, btnContainer, container]);
+  appendToParent(page, [bigDiv]);
 
   gridBtn.addEventListener('click', () => {
     container.classList.remove('list-view');
