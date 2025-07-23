@@ -27,7 +27,7 @@ body {
   margin-bottom: 20px;
 }
 
-.view-buttons button {
+.view-buttons button,.add-to-cart-btn {
   padding: 10px 15px;
   margin: 0 5px;
   border: 1px solid #ccc;
@@ -39,7 +39,8 @@ body {
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.view-buttons button:hover {
+.view-buttons button:hover,
+.add-to-cart-btn:hover {
   background-color: rgb(64, 152, 235);
   color: #fff;
   border-color: rgb(64, 152, 235);
@@ -81,7 +82,7 @@ body {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 15px;
+  padding: 20px;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -110,8 +111,10 @@ body {
   color: #666;
   margin: 4px 0;
 }
-
 .product-card p:last-child {
   font-weight: bold;
   color: rgb(64, 152, 235);
+}
+.add-to-cart-btn {
+  margin-top: 10px;
 }

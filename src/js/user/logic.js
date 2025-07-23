@@ -40,7 +40,14 @@ const CustomerProductsPage = () => {
       const price = createElement('p', [], `$${product.price}`);
       const category = createElement('p', [], product.category);
 
-      appendToParent(card, [img, name, details, price, category]);
+      const addToCartBtn = createElement(
+        'button',
+        ['add-to-cart-btn'],
+        'Add to Cart'
+      );
+
+
+      appendToParent(card, [img, name, details, price, category, addToCartBtn]);
       appendToParent(container, [card]);
     });
   };
