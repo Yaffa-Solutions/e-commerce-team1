@@ -1,30 +1,27 @@
-
-
 const moreCategory = document.querySelector('.category-item:last-child');
-    const dropdown = document.querySelector('.dropdown');
+const dropdown = document.querySelector('.dropdown');
 
-   if (moreCategory && dropdown) {
-      let dropdownOpen = false;
+if (moreCategory && dropdown) {
+  let dropdownOpen = false;
 
-    moreCategory.addEventListener('click', (e) => {
-      e.stopPropagation(); 
-      dropdownOpen = !dropdownOpen;
-      dropdown.style.display = dropdownOpen ? 'block' : 'none';
+  moreCategory.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdownOpen = !dropdownOpen;
+    dropdown.style.display = dropdownOpen ? 'block' : 'none';
   });
 
-     document.addEventListener('click', () => {
-      if (dropdownOpen) {
-        dropdown.style.display = 'none';
-        dropdownOpen = false;
-      }
-    });
- 
-   }
+  document.addEventListener('click', () => {
+    if (dropdownOpen) {
+      dropdown.style.display = 'none';
+      dropdownOpen = false;
+    }
+  });
+}
 
 function addToCart(product) {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  const existingProduct = cart.find(p => p.id === product.id);
+  const existingProduct = cart.find((p) => p.id === product.id);
 
   if (existingProduct) {
     existingProduct.quantity += 1;
@@ -35,7 +32,6 @@ function addToCart(product) {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-
 function removeFromCart(index) {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.splice(index, 1);
@@ -43,16 +39,14 @@ function removeFromCart(index) {
   renderCartPage();
 }
 
-
 function calculateCartTotal(cart) {
   return cart.reduce((total, item) => {
     return total + item.price * item.quantity;
   }, 0);
 }
 
-
 function renderCartPage() {
-  document.body.innerHTML = ''
+  document.body.innerHTML = '';
 
   const title = document.createElement('h1');
   title.textContent = 'cart';
@@ -158,7 +152,6 @@ const CustomerProductsPage = () => {
         'Add to Cart'
       );
 
-
       appendToParent(card, [img, name, details, price, category, addToCartBtn]);
       appendToParent(container, [card]);
     });
@@ -183,3 +176,65 @@ const CustomerProductsPage = () => {
 
 CustomerProductsPage();
 
+const offersData = [
+  {
+    title: '20% Off Shoes',
+    description: 'Valid until end of the month.',
+    image: '../../public/images/download.jpeg',
+    discountPercent: 20,
+    oldPrice: 100,
+  },
+  {
+    title: 'Buy 1 Get 1 Free',
+    description: 'On all summer shirts.',
+    image: '../../public/images/download.jpeg',
+    discountPercent: 50,
+    oldPrice: 50,
+  },
+  {
+    title: '10% Off First Order',
+    description: 'When you register as a new customer.',
+    image: '../../public/images/download.jpeg',
+    discountPercent: 10,
+    oldPrice: 200,
+  },
+];
+
+const OffersPage = () => {
+  const bigDiv = createElement('div', ['offers-container']);
+  const header = createElement(
+    'h2',
+    ['page-title'],
+    'Current Offers & Discounts:'
+  );
+
+  const container = createElement('div', ['customer-products', 'grid-view']);
+
+  offersData.forEach((offer) => {
+    const card = createElement('div', ['product-card']);
+
+    const img = document.createElement('img');
+    img.src = offer.image;
+    img.alt = offer.title;
+
+    const title = createElement('h3', [], offer.title);
+    const desc = createElement('p', [], offer.description);
+    const discount = createElement(
+      'p',
+      ['offer-discount'],
+      `${offer.discountPercent}% OFF`
+    );
+
+    const oldPrice = createElement(
+      'p',
+      ['old-price'],
+      `Old Price: $${offer.oldPrice}`
+    );
+    appendToParent(card, [img, title, desc, discount, oldPrice]);
+    container.appendChild(card);
+  });
+
+  appendToParent(bigDiv, [header, container]);
+  page.appendChild(bigDiv);
+};
+OffersPage();
