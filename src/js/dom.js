@@ -13,79 +13,85 @@ const appendToParent = (parent, children = []) => {
   });
 };
 
-const createInput = (name, type) => {
-  let input = createElement('input');
+const createInput = (name, classes = [], type, value) => {
+  let input = createElement('input', classes);
   input.type = type;
   input.name = name;
+  input.value = value;
   return input;
 };
 
-
-const createInput=(name,classes=[],type,value)=>{
-    let input=createElement('input',classes)
-    input.type=type
-    input.name=name
-    input.value=value
-    return input
-}
-
-const createSelect=(categories,classes=[],selectValue='')=>{
-    let select=createElement('select',classes)
-    select.name='category'
-    const categoriesOptions =categories.map((category)=>{
-        let option=createElement('option',[],category)
-        option.value=category
-        if(selectValue==category){
-            option.selected=true
-        }
-        return option
-    })
-    appendToParent(select, categoriesOptions)
-    return select
-}
+const createSelect = (categories, classes = [], selectValue = '') => {
+  let select = createElement('select', classes);
+  select.name = 'category';
+  const categoriesOptions = categories.map((category) => {
+    let option = createElement('option', [], category);
+    option.value = category;
+    if (selectValue == category) {
+      option.selected = true;
+    }
+    return option;
+  });
+  appendToParent(select, categoriesOptions);
+  return select;
+};
 //#2
 const createTable = (products) => {
-    const table = createElement('table', ['product-table'])
-    
-    const thead = createElement('thead')
-    const headerRow = createElement('tr')
-    const headers = ['Image', 'Name', 'Details', 'Price ($)', 'Category', 'Actions']
-    headers.forEach(text => {
-        const th = createElement('th', [], text)
-        appendToParent(headerRow, [th])
-    })
-    appendToParent(thead, [headerRow])
+  const table = createElement('table', ['product-table']);
 
-    const tbody = createElement('tbody')
-    products.forEach((product) => {
-        const row = createElement('tr')
+  const thead = createElement('thead');
+  const headerRow = createElement('tr');
+  const headers = [
+    'Image',
+    'Name',
+    'Details',
+    'Price ($)',
+    'Category',
+    'Actions',
+  ];
+  headers.forEach((text) => {
+    const th = createElement('th', [], text);
+    appendToParent(headerRow, [th]);
+  });
+  appendToParent(thead, [headerRow]);
 
-        const imageTd = createElement('td')
-        const img = document.createElement('img')
-        img.src = product.image
-        img.alt = product.name
-        img.style.width = 'auto'
-        img.style.height = '100px'
-        imageTd.style.width = '150px'
-        imageTd.appendChild(img)
-        
-        const nameTd = createElement('td', [], product.name)
-        const detailTd = createElement('td', [], product.details)
-        const priceTd = createElement('td', [], product.price.toString())
-        const categoryTd = createElement('td', [], product.category)
+  const tbody = createElement('tbody');
+  products.forEach((product) => {
+    const row = createElement('tr');
 
-        const actionsTd = createElement('td')
-        const editBtn = createElement('button', ['edit-btn'], 'Edit')
-        const deleteBtn = createElement('button', ['delete-btn'], 'Delete')
-        appendToParent(actionsTd, [editBtn, deleteBtn])
+    const imageTd = createElement('td');
+    const img = document.createElement('img');
+    img.src = product.image;
+    img.alt = product.name;
+    img.style.width = 'auto';
+    img.style.height = '100px';
+    imageTd.style.width = '150px';
+    imageTd.appendChild(img);
 
-        appendToParent(row, [imageTd, nameTd, detailTd, priceTd, categoryTd, actionsTd])
-        appendToParent(tbody, [row])
-    })
+    const nameTd = createElement('td', [], product.name);
+    const detailTd = createElement('td', [], product.details);
+    const priceTd = createElement('td', [], product.price.toString());
+    const categoryTd = createElement('td', [], product.category);
 
-    appendToParent(table, [thead, tbody])
-    return table
-}
+    const actionsTd = createElement('td');
+    const editBtn = createElement('button', ['edit-btn'], 'Edit');
+    const deleteBtn = createElement('button', ['delete-btn'], 'Delete');
+    appendToParent(actionsTd, [editBtn, deleteBtn]);
+
+    appendToParent(row, [
+      imageTd,
+      nameTd,
+      detailTd,
+      priceTd,
+      categoryTd,
+      actionsTd,
+    ]);
+    appendToParent(tbody, [row]);
+  });
+
+  appendToParent(table, [thead, tbody]);
+  return table;
+};
 
 const nav = document.createElement('nav');
 nav.classList.add('navbar');
@@ -120,11 +126,11 @@ const items = [
     columns: [
       { title: 'Electronics', items: ['Phones', 'Laptops', 'Accessories'] },
       { title: 'Clothing', items: ['Men', 'Women', 'Kids'] },
-      { title: 'Home & Kitchen', items: ['Furniture', 'Cookware', 'Decor'] }
-    ]
+      { title: 'Home & Kitchen', items: ['Furniture', 'Cookware', 'Decor'] },
+    ],
   },
   { type: 'text', label: 'Deals', icon: 'fa-tags' },
-  { type: 'cart', icon: 'fa-shopping-cart' }
+  { type: 'cart', icon: 'fa-shopping-cart' },
 ];
 
 function createIcon(className) {
@@ -143,7 +149,7 @@ function createColumn(columnData) {
   column.appendChild(title);
 
   const ul = document.createElement('ul');
-  columnData.items.forEach(item => {
+  columnData.items.forEach((item) => {
     const li = document.createElement('li');
     li.textContent = item;
     ul.appendChild(li);
@@ -153,7 +159,7 @@ function createColumn(columnData) {
   return column;
 }
 
-items.forEach(item => {
+items.forEach((item) => {
   const li = document.createElement('li');
   li.classList.add('menu-item');
 
@@ -168,7 +174,7 @@ items.forEach(item => {
     const megaMenu = document.createElement('div');
     megaMenu.classList.add('mega-menu');
 
-    item.columns.forEach(columnData => {
+    item.columns.forEach((columnData) => {
       const column = createColumn(columnData);
       megaMenu.appendChild(column);
     });
@@ -190,11 +196,9 @@ document.body.prepend(nav);
 const hero = document.createElement('div');
 hero.classList.add('hero-section');
 
-
 const heroText = document.createElement('div');
 heroText.classList.add('hero-text');
 heroText.textContent = 'Find quality products at the best prices.';
-
 
 const searchBox = document.createElement('div');
 searchBox.classList.add('search-box');
@@ -214,7 +218,7 @@ hero.appendChild(searchBox);
 document.body.insertBefore(hero, document.body.children[1]);
 
 function renderCartPage() {
-  document.body.innerHTML = ''; 
+  document.body.innerHTML = '';
 
   const title = document.createElement('h1');
   title.textContent = 'cart';
@@ -256,7 +260,7 @@ function renderCartPage() {
     deleteBtn.onclick = () => {
       cart.splice(index, 1);
       localStorage.setItem('cart', JSON.stringify(cart));
-      renderCartPage(); 
+      renderCartPage();
     };
 
     productDiv.appendChild(image);
@@ -270,7 +274,6 @@ function renderCartPage() {
 
   document.getElementById('total').textContent = total.toFixed(2);
 
-
   const backBtn = document.createElement('button');
   backBtn.textContent = 'back';
   backBtn.style.marginTop = '20px';
@@ -281,15 +284,4 @@ function renderCartPage() {
   document.body.appendChild(backBtn);
 }
 
-const createSelect = (categories) => {
-  let select = createElement('select');
-  select.name = 'category';
-  const categoriesOptions = categories.map((category) => {
-    let option = createElement('option', [], category);
-    option.value = category;
-    return option;
-  });
-  appendToParent(select, categoriesOptions);
-  return select;
-};
 
