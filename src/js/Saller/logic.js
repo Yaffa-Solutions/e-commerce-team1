@@ -9,6 +9,11 @@ const categories = [
   "Accessories",
   "Toys",
 ];
+let productId=0;
+const IncreaseProductId = () => {
+  productId++;
+  return productId;
+}
 // Add Product
 const productForm = (index) => {
   product = products[index] || {};
@@ -88,6 +93,7 @@ const productForm = (index) => {
     if (validation()) {
       if (index == undefined) {
         let newProduct = {
+          id: IncreaseProductId(),
           name: inputName.value,
           details: inputDetail.value,
           price: parseFloat(inputPrice.value),
@@ -277,7 +283,7 @@ const updateProductTable = (filteredProducts) => {
   newTable.querySelectorAll(".edit-btn").forEach((btn, index) => {
     btn.addEventListener("click", () => {
       const realIndex = products.findIndex(
-        (p) => p.name === filteredProducts[index].name
+        (p) => p.id === filteredProducts[index].id
       );
       productForm(realIndex);
     });
@@ -286,7 +292,7 @@ const updateProductTable = (filteredProducts) => {
   newTable.querySelectorAll(".delete-btn").forEach((btn, index) => {
     btn.addEventListener("click", () => {
       const realIndex = products.findIndex(
-        (p) => p.name === filteredProducts[index].name
+        (p) => p.id === filteredProducts[index].id
       );
       products.splice(realIndex, 1);
       localStorage.setItem("products", JSON.stringify(products));
