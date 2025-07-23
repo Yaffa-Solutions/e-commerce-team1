@@ -14,19 +14,23 @@ const appendToParent=(parent,children=[])=>{
 }
 
 
-const createInput=(name,classes=[],type)=>{
+const createInput=(name,classes=[],type,value)=>{
     let input=createElement('input',classes)
     input.type=type
     input.name=name
+    input.value=value
     return input
 }
 
-const createSelect=(categories)=>{
-    let select=createElement('select')
+const createSelect=(categories,classes=[],selectValue='')=>{
+    let select=createElement('select',classes)
     select.name='category'
     const categoriesOptions =categories.map((category)=>{
         let option=createElement('option',[],category)
         option.value=category
+        if(selectValue==category){
+            option.selected=true
+        }
         return option
     })
     appendToParent(select, categoriesOptions)
@@ -53,8 +57,9 @@ const createTable = (products) => {
         const img = document.createElement('img')
         img.src = product.image
         img.alt = product.name
-        img.style.width = '50px'
-        img.style.height = '50px'
+        img.style.width = 'auto'
+        img.style.height = '100px'
+        imageTd.style.width = '150px'
         imageTd.appendChild(img)
         
         const nameTd = createElement('td', [], product.name)
