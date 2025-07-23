@@ -20,7 +20,7 @@ h2 {
   margin-bottom: 20px;
 }
 
-p{
+p {
   color: red;
   margin-top: -10px;
 }
@@ -40,7 +40,7 @@ label {
   font-size: 14px;
 }
 
-select {
+.select-form {
   width: 98%;
   padding: 10px;
   margin-bottom: 15px;
@@ -98,14 +98,16 @@ button[type="button"] {
   width: 100%;
   border-collapse: collapse;
 }
-.product-table th, .product-table td {
+.product-table th,
+.product-table td {
   border: 1px solid #ccc;
   padding: 10px;
 }
-.button-group button, .product-table button {
+.button-group button,
+.product-table button {
   margin: 4px;
 }
-.search-bar input {
+#searchBar {
   width: 50%;
   padding: 8px;
   margin-bottom: 10px;
@@ -150,4 +152,19 @@ button[type="button"] {
 
 .delete-btn:hover {
   background-color: #d32f2f;
+}
+
+.filter-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-div select {
+  padding: 8px;
+}
+
+td{
+  text-align: center;
 }
