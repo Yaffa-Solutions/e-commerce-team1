@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *{
     font-family: "Poppins", sans-serif;
 }
@@ -148,6 +149,12 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f8f9fa;
+=======
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  padding: 20px;
+>>>>>>> develop
 }
 .no-products {
   text-align: center;

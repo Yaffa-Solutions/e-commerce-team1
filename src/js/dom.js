@@ -116,16 +116,16 @@ function createIcon(className) {
 }
 
 function createColumn(columnData) {
-  const column = document.createElement("div");
-  column.classList.add("column");
+  const column = document.createElement('div');
+  column.classList.add('column');
 
-  const title = document.createElement("h4");
+  const title = document.createElement('h4');
   title.textContent = columnData.title;
   column.appendChild(title);
 
-  const ul = document.createElement("ul");
-  columnData.items.forEach((item) => {
-    const li = document.createElement("li");
+  const ul = document.createElement('ul');
+  columnData.items.forEach(item => {
+    const li = document.createElement('li');
     li.textContent = item;
     ul.appendChild(li);
   });
@@ -258,19 +258,19 @@ function renderCartPage() {
   `;
   document.body.appendChild(totalDiv);
 
-  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
   let total = 0;
 
   cart.forEach((item, index) => {
-    const productDiv = document.createElement("div");
-    productDiv.classList.add("cart-item");
+    const productDiv = document.createElement('div');
+    productDiv.classList.add('cart-item');
 
-    const image = document.createElement("img");
+    const image = document.createElement('img');
     image.src = item.image;
     image.alt = item.name;
 
-    const details = document.createElement("div");
-    details.classList.add("cart-details");
+    const details = document.createElement('div');
+    details.classList.add('cart-details');
     details.innerHTML = `
       <strong>${item.name}</strong><br>
       price: $${item.price}<br>
@@ -278,12 +278,12 @@ function renderCartPage() {
       total: $${(item.price * item.quantity).toFixed(2)}
     `;
 
-    const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "delete";
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'delete';
     deleteBtn.onclick = () => {
       cart.splice(index, 1);
-      localStorage.setItem("cart", JSON.stringify(cart));
-      renderCartPage();
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCartPage(); 
     };
 
     productDiv.appendChild(image);
@@ -295,12 +295,13 @@ function renderCartPage() {
     total += item.price * item.quantity;
   });
 
-  document.getElementById("total").textContent = total.toFixed(2);
+  document.getElementById('total').textContent = total.toFixed(2);
 
-  const backBtn = document.createElement("button");
-  backBtn.textContent = "back";
-  backBtn.style.marginTop = "20px";
-  backBtn.addEventListener("click", () => {
+
+  const backBtn = document.createElement('button');
+  backBtn.textContent = 'back';
+  backBtn.style.marginTop = '20px';
+  backBtn.addEventListener('click', () => {
     location.reload(); // أو renderHome
   });
 

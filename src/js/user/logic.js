@@ -38,6 +38,7 @@ function addToCart(product) {
 
 
 /*function removeFromCart(index) {
+function removeFromCart(index) {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.splice(index, 1);
   localStorage.setItem('cart', JSON.stringify(cart));
@@ -111,7 +112,11 @@ function renderCartPage() {
   document.getElementById('total').textContent = total.toFixed(2);
 }
 
+<<<<<<< HEAD
 // const page = document.getElementById('app');
+=======
+const page = document.getElementById('app');
+>>>>>>> develop
 
 const CustomerProductsPage = () => {
   page.innerHTML = '';
@@ -183,4 +188,3 @@ const CustomerProductsPage = () => {
 };
 
 CustomerProductsPage();*/
-
