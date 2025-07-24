@@ -112,25 +112,7 @@
   cursor: pointer;
 }
 
-.hero-section {
-  background-image: url('https://img.freepik.com/free-photo/abstract-blur-shopping-mall_1203-8803.jpg');
-  background-size: cover;
-  background-position: center;
-  padding: 10rem 2.5rem;
-  text-align: center;
-  color: white;
-  position: relative;
-  height: 35vh;
-}
 
-.hero-text {
-   font-size: 32px; 
-  font-weight: bold;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
 
 .search-box {
   display: flex;
@@ -166,7 +148,6 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f8f9fa;
-  padding: 20px;
 }
 .no-products {
   text-align: center;

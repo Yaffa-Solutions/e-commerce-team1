@@ -1,5 +1,6 @@
 
-
+createNav()
+createHeroSection()
 const moreCategory = document.querySelector('.category-item:last-child');
     const dropdown = document.querySelector('.dropdown');
 

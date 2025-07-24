@@ -113,14 +113,13 @@
 }
 
 .hero-section {
-  background-image: url('https://img.freepik.com/free-photo/abstract-blur-shopping-mall_1203-8803.jpg');
+  background-image: url('../public/images/Shopping.webp');
   background-size: cover;
   background-position: center;
   padding: 10rem 2.5rem;
   text-align: center;
   color: white;
   position: relative;
-  height: 35vh;
 }
 
 .hero-text {
@@ -163,3 +162,18 @@
   pointer-events: none;
 }
 
+.LoginBtn{
+  padding: 12px;
+  background-color: transparent;
+  font-size: 16px;
+  color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.LoginCartDiv{
+  display: flex;
+  align-items: baseline;
+}
