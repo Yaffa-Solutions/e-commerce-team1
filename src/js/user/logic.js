@@ -1,5 +1,6 @@
 
-
+createNav()
+createHeroSection()
 const moreCategory = document.querySelector('.category-item:last-child');
     const dropdown = document.querySelector('.dropdown');
 
@@ -36,6 +37,7 @@ function addToCart(product) {
 }
 
 
+/*function removeFromCart(index) {
 function removeFromCart(index) {
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
   cart.splice(index, 1);
@@ -110,7 +112,11 @@ function renderCartPage() {
   document.getElementById('total').textContent = total.toFixed(2);
 }
 
+<<<<<<< HEAD
+// const page = document.getElementById('app');
+=======
 const page = document.getElementById('app');
+>>>>>>> develop
 
 const CustomerProductsPage = () => {
   page.innerHTML = '';
@@ -181,5 +187,4 @@ const CustomerProductsPage = () => {
   });
 };
 
-CustomerProductsPage();
-
+CustomerProductsPage();*/

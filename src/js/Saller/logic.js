@@ -1,22 +1,28 @@
-let products = JSON.parse(localStorage.getItem("products")) || [];
-let displayProdutcs = products;
-const page = document.getElementById("app");
+createNav('Logout');
+let productsItems = JSON.parse(localStorage.getItem("products")) || [];
+let displayProdutcs = productsItems;
+// const page = document.getElementById("app");
 const categories = [
   "Select One",
   "Clothing",
   "Electronics",
-  "Home Appliances",
   "Accessories",
   "Toys",
 ];
-let productId=0;
-const IncreaseProductId = () => {
-  productId++;
-  return productId;
-}
+
+const reverseArr = () => {
+  productsItems.reverse();
+};
+
+const generateId = () => {
+  reverseArr();
+  let productId = productsItems[0].id ?? 0;
+  console.log(productId);
+  return (productId += 1);
+};
 // Add Product
 const productForm = (index) => {
-  product = products[index] || {};
+  product = productsItems[index] || {};
   const title = index == undefined ? "Add Product" : "Edit Product";
   page.innerHTML = "";
   const bigDiv = createElement("div", ["form-container"]);
@@ -93,26 +99,26 @@ const productForm = (index) => {
     if (validation()) {
       if (index == undefined) {
         let newProduct = {
-          id: IncreaseProductId(),
+          id: generateId(),
           name: inputName.value,
           details: inputDetail.value,
           price: parseFloat(inputPrice.value),
           image: inputImage.value,
           category: inputCategory.value,
         };
-
-        products.push(newProduct);
-        localStorage.setItem("products", JSON.stringify(products));
+        reverseArr();
+        productsItems.push(newProduct);
+        localStorage.setItem("products", JSON.stringify(productsItems));
         ProductTablePage();
       } else {
-        products[index] = {
+        productsItems[index] = {
           name: inputName.value,
           details: inputDetail.value,
           price: inputPrice.value,
           image: inputImage.value,
           category: inputCategory.value,
         };
-        localStorage.setItem("products", JSON.stringify(products));
+        localStorage.setItem("products", JSON.stringify(productsItems));
         ProductTablePage();
       }
     }
@@ -194,11 +200,10 @@ const clearErrorMessages = () => {
 };
 
 // #2
-const ProductTablePage = () => {
+function ProductTablePage() {
   page.innerHTML = "";
 
   const container = createElement("div", ["product-table-container"]);
-  const header = createElement("h2", [], "Product List");
   const div = createElement("div", ["filter-div"]);
   const searchBar = createSearchBar();
   const selectCategory = createSelect(categories);
@@ -212,8 +217,7 @@ const ProductTablePage = () => {
   );
 
   addBtn.addEventListener("click", () => productForm());
-
-  const table = createTable(products);
+  const table = createTable(productsItems);
 
   table.querySelectorAll(".edit-btn").forEach((btn, index) => {
     btn.addEventListener("click", () => productForm(index));
@@ -221,18 +225,18 @@ const ProductTablePage = () => {
 
   table.querySelectorAll(".delete-btn").forEach((btn, index) => {
     btn.addEventListener("click", () => {
-      products.splice(index, 1);
-      localStorage.setItem("products", JSON.stringify(products));
-      updateProductTable(products);
+      productsItems.splice(index, 1);
+      localStorage.setItem("products", JSON.stringify(productsItems));
+      updateProductTable(productsItems);
     });
   });
 
   selectCategory.addEventListener("change", () => {
     applyFilters();
   });
-  appendToParent(container, [header, addBtn, div, table]);
+  appendToParent(container, [addBtn, div, table]);
   appendToParent(page, [container]);
-};
+}
 
 const createSearchBar = () => {
   const input = createInput("search", [], "text", "");
@@ -246,33 +250,29 @@ const createSearchBar = () => {
   return input;
 };
 
-
 const applyFilters = () => {
-  let result = products;
+  let result = productsItems;
 
   const categoryValue = document.querySelector("select").value;
   const searchValue = document.getElementById("searchBar").value.toLowerCase();
 
-  if( categoryValue !== "Select One" && searchValue == "") {
-    result = products.filter((p) => p.category.toLowerCase().includes(categoryValue.toLowerCase()));
-  }
-  else if (categoryValue !== "Select One" && searchValue!=="") {
-    result = result.filter((p) => p.category.includes(categoryValue)).filter(
-      (p) => p.name.toLowerCase().includes(searchValue)
+  if (categoryValue !== "Select One" && searchValue == "") {
+    result = productsItems.filter((p) =>
+      p.category.toLowerCase().includes(categoryValue.toLowerCase())
     );
+  } else if (categoryValue !== "Select One" && searchValue !== "") {
+    result = result
+      .filter((p) => p.category.includes(categoryValue))
+      .filter((p) => p.name.toLowerCase().includes(searchValue));
   }
 
   if (searchValue !== "") {
-    result = result.filter(
-      (p) =>
-        p.name.toLowerCase().includes(searchValue) 
-    );
+    result = result.filter((p) => p.name.toLowerCase().includes(searchValue));
   }
 
   displayedProducts = result;
   updateProductTable(displayedProducts);
 };
-
 
 const updateProductTable = (filteredProducts) => {
   const oldTable = document.querySelector(".product-table-container table");
@@ -282,7 +282,7 @@ const updateProductTable = (filteredProducts) => {
 
   newTable.querySelectorAll(".edit-btn").forEach((btn, index) => {
     btn.addEventListener("click", () => {
-      const realIndex = products.findIndex(
+      const realIndex = productsItems.findIndex(
         (p) => p.id === filteredProducts[index].id
       );
       productForm(realIndex);
@@ -291,17 +291,14 @@ const updateProductTable = (filteredProducts) => {
 
   newTable.querySelectorAll(".delete-btn").forEach((btn, index) => {
     btn.addEventListener("click", () => {
-      const realIndex = products.findIndex(
+      const realIndex = productsItems.findIndex(
         (p) => p.id === filteredProducts[index].id
       );
-      products.splice(realIndex, 1);
-      localStorage.setItem("products", JSON.stringify(products));
+      productsItems.splice(realIndex, 1);
+      localStorage.setItem("products", JSON.stringify(productsItems));
       ProductTablePage();
     });
   });
 
   document.querySelector(".product-table-container").appendChild(newTable);
 };
-
-
-

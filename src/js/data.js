@@ -48,3 +48,5 @@ const products=[
         image: "https://images.pexels.com/photos/701877/pexels-photo-701877.jpeg"
     }
 ]
+localStorage.setItem("products", JSON.stringify(products));
+
